@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch a thief</title>
+    <style>
+        .div2 img {
+            height: 200px;
+            width: 150px;
+        }
+
+        h1 {
+            margin-left: 456px;
+            font-size: 50px;
+            color: white;
+            text-transform: uppercase;
+            font-family: cursive;
+        }
+
+        #btn2 {
+            position: absolute;
+            left: 1000px;
+            bottom: 50px;
+        }
+
+        #rod {
+            display: none;
+        }
+
+        body {
+
+            background-image: url("https://e0.pxfuel.com/wallpapers/122/370/desktop-wallpaper-anime-background-night-street-cartoon-city-night.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+           
+
+        }
+
+        #btn3 {
+
+            position: relative;
+            top: 270px;
+            left: 900px;
+            display: none;
+        }
+
+        h3 {
+
+            font-family: cursive;
+            position: relative;
+            background-color: crimson;
+            color: black;
+            width: 180px;
+            height: 40px;
+            font-size: 25px;
+            border-radius: 25px;
+            left: 1450px;
+            top: 500px;
+            padding: 11px 0px 5px 30px;
+
+        }
+
+        .playbtn {
+            display: none;
+            font-family: cursive;
+            position: relative;
+            top: 155px;
+            left: 570px;
+            background-color: rgb(231, 247, 7);
+            color: black;
+            width: 200px;
+            height: 55px;
+            font-size: 35px;
+            border-radius: 28px;
+            font-weight: 500;
+            border: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        <h1>Catch A Thief</h1>
+    </div>
+
+    <div class="div2">
+        <img id="btn2" onclick="Catch()" class="btn" src="/HTML/images/thief-cartoon-.png" alt="thief">
+
+    </div>
+    <div class="div3">
+        <img id="btn3" class="btnnn" src="/HTML/images/callpolice.png" alt="police">
+        <h3 style="display: none;" class="policebtn" onclick="Catch()"> Call a Police</h3>
+    </div>
+
+    <audio class="stops" src="Subway Surfers - Gaming Bgm.mp3" autoplay loop></audio>
+
+    <div class="playAgain">
+        <button class="playbtn" onclick="playAgain()">Play Again</button>
+    </div>
+
+
+    <script>
+        const btn = document.querySelector(".btn");
+        btn.addEventListener('mouseover', Move);
+
+        function Move() {
+            const btn = document.querySelector(".btn");
+            var a = Math.floor(Math.random() * 1000) + "px";
+            var b = Math.floor(Math.random() * 500) + "px";
+
+            btn.style.left = a;
+            btn.style.top = b;
+            btn.style.right = b;
+        }
+
+        const btnnn = document.querySelector(".btnnn");
+        const policebtn = document.querySelector(".policebtn");
+        const play = document.querySelector(".playbtn");
+        function Catch() {
+            btnnn.style.display = "block";
+            policebtn.style.display = "none";
+            btn.removeEventListener('mouseover', Move)
+
+            play.style.display = "block";
+            win()
+        }
+
+        const stops = document.querySelector(".stops");
+        function win() {
+
+            stops.src = "Oh-No-Oh-No(PagalWorld) (mp3cut.net).mp3";
+            btn.src = "https://img.freepik.com/premium-vector/cartoon-prisoner-wearing-classic-striped-prison-uniform-jail-cell_853598-23.jpg?w=2000";
+
+        }
+
+        function playAgain() {
+            btnnn.style.display = "none";
+            btn.src = "/HTML/images/thief-cartoon-.png";
+            stops.src = "Subway Surfers - Gaming Bgm.mp3";
+            btn.addEventListener('mouseover', Move);
+            Move();
+            play.style.display = "none";
+        }
+
+    </script>
+</body>
+
+</html>
